@@ -1,0 +1,50 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Marathon {
+    public static void main(String[] args) {
+        // Create a HashMap to store runner names and their times
+        Map<String, Integer> runners = new HashMap<>();
+        runners.put("Elena", 341);
+        runners.put("Thomas", 273);
+        runners.put("Hamilton", 278);
+        runners.put("Suzie", 329);
+        runners.put("Phil", 445);
+        runners.put("Matt", 402);
+        runners.put("Alex", 388);
+        runners.put("Emma", 275);
+
+        // Variables to track the fastest and second fastest runners
+        String fastestRunner = "";
+        String secondFastestRunner = "";
+        int fastestTime = Integer.MAX_VALUE;
+        int secondFastestTime = Integer.MAX_VALUE;
+
+        // Iterate through the map to find the fastest and second fastest runners
+        for (Map.Entry<String, Integer> entry : runners.entrySet()) {
+            int time = entry.getValue();
+            String name = entry.getKey();
+
+            if (time < fastestTime) {
+                // Update the second fastest to the previous fastest
+                secondFastestTime = fastestTime;
+                secondFastestRunner = fastestRunner;
+
+                // Update the fastest runner
+                fastestTime = time;
+                fastestRunner = name;
+            } else if (time < secondFastestTime) {
+                // Update the second fastest runner
+                secondFastestTime = time;
+                secondFastestRunner = name;
+            }
+        }
+
+        // Print the results
+        System.out.println("Fastest runner: " + fastestRunner + " with time " + fastestTime + " minutes.");
+        System.out.println("Second fastest runner: " + secondFastestRunner + " with time " + secondFastestTime + " minutes.");
+    }
+}
+"C:\Users\BIDAL JOSEPH\.jdks\openjdk-22.0.2\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\lib\idea_rt.jar=51996:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\BIDAL JOSEPH\.jdks\Helloworld.java\out\production\Helloworld.java" Marathon
+Fastest runner: Thomas with time 273 minutes.
+Second fastest runner: Emma with time 275 minutes.
